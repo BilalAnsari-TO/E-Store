@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-
+import { toast } from "react-hot-toast";
 const Cart = () => {
   const { cartItems, subTotal, tax, shipping, total } = useSelector(
     (state) => state.cart
@@ -31,6 +31,8 @@ const Cart = () => {
     dispatch({ type: "calculatePrice" });
   };
 
+  const notify = () =>
+    toast.error("This is a dummy project, no payment method");
   return (
     <div className="cart">
       <main>
@@ -58,7 +60,7 @@ const Cart = () => {
         <h2>Shipping: ${shipping}</h2>
         <h2>Tax: ${tax}</h2>
         <h2>Total: ${total}</h2>
-        <button>Checkout</button>
+        <button onClick={notify}>Checkout</button>
       </aside>
     </div>
   );
